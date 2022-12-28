@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
@@ -16,6 +17,11 @@ const multer = require("multer");
 const path = require("path");
 
 dotenv.config();
+
+app.use(cors())
+
+app.options('*', cors())
+
 app.use(bodyParser.json({ extended: true, limit: "50mb" }));
 app.use(
   bodyParser.urlencoded({
